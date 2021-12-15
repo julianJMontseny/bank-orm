@@ -19,11 +19,18 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.GET,name = "/customers")
     public List<Customer> list(){
-        return customerRepository.findAll();
+            return customerRepository.findAll();
+
     }
 
+//    @RequestMapping(method = RequestMethod.GET,name = "/customers/{id}")
+//    public Customer getCustomer(@PathVariable("id") int id){
+//        Optional<Customer> customerOptional = customerRepository.findById(id);
+//        return customerOptional.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Customer not found"));
+//    }
+
     @RequestMapping(method = RequestMethod.POST,name = "/customers")
-    public void postCustomer(Customer customer){
+    public void postCustomer(@RequestBody Customer customer){
         if(customerRepository.existsById(customer.getId())){
             throw new ResponseStatusException(HttpStatus.CONFLICT,"Customer already exists");
         } else {
@@ -40,10 +47,7 @@ public class CustomerController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET,name = "/customers/{id}")
-    public Optional<Customer> getCustomer(@PathVariable("id") int id){
-        return customerRepository.findById(id);
-    }
+
 
 
 
