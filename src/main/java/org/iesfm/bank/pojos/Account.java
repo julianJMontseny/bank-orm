@@ -13,14 +13,17 @@ public class Account {
     private String iban;
     @Column(name = "owner_id")
     private int ownerId;
+    @Column(nullable = false)
     private double balance;
     @Column(name = "open_date")
     private Date openDate;
-
-    //El OneToMany es para traer cosas desde otra tabla (en este caso, movimientos). Y es ahí cuando tenemos que enlazarlas a través del JoinColumn
+    //El OneToMany es para traer cosas desde otra tabla (en este caso, movimientos).
+    // Y es ahí cuando tenemos que enlazarlas a través del JoinColumn
     @OneToMany
     @JoinColumn(name = "iban" , referencedColumnName = "iban")
     private List<Movement> accountMovements;
+
+
 
     public String getIban() {
         return iban;

@@ -12,26 +12,29 @@ public class Movement {
 
     @Id
     @GeneratedValue
-    private int id;
-    private int iban;
+    private Integer id;
+    @Column(nullable = false)
+    private String iban;
     @Column(name = "movement_date")
     private Date movementDate;
+    @Column(nullable = false)
     private double amount;
+    @Column(nullable = false)
     private String description;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getIban() {
+    public String getIban() {
         return iban;
     }
 
-    public void setIban(int iban) {
+    public void setIban(String iban) {
         this.iban = iban;
     }
 
