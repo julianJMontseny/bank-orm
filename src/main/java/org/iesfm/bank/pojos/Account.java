@@ -19,7 +19,7 @@ public class Account {
     private Date openDate;
     //El OneToMany es para traer cosas desde otra tabla (en este caso, movimientos).
     // Y es ahí cuando tenemos que enlazarlas a través del JoinColumn
-    //El orphan es para que funcionase una cosa del Delete Account.
+    //El orphan es para que cuando se elimine un Account, se elimine los datos en cascada.
     @OneToMany(orphanRemoval = true,
                 cascade = CascadeType.ALL,
                 mappedBy = "iban")
