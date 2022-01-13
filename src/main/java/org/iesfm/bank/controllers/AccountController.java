@@ -52,5 +52,12 @@ public class AccountController {
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/customers/{nif}/accounts")
+    public List<Account> listAccountsByNif(@PathVariable("nif") String nif){
+
+        return null;
+    }
+
+
 
 }
